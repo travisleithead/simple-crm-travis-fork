@@ -1,0 +1,17 @@
+{
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.0.0"
+  },
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "update-graphql": "npm run update-graphql --workspaces --if-present"
+  },
+  "workspaces": [
+    "code/client",
+    "code/server"
+  ]
+}
