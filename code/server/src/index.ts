@@ -22,10 +22,10 @@ const run = async () => {
     app.put("/users/:id", async (req, res) => {
         const user = await AppDataSource.manager
             .getRepository(User)
-            .findOne(req.params.id);
+            .findOne({ where: { id: req.params.id } });
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
-        user.age = req.body.age;
+        user.id = req.body.age;
         user.phoneNumber = req.body.phoneNumber;
         await AppDataSource.manager.getRepository(User).save(user);
         res.json(user);
