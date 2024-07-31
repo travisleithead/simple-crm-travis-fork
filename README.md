@@ -1,5 +1,9 @@
 # SimpleCRM
 
+## Prerequisites
+
+Node v18+
+
 ## Local setup
 
 in the root of the repository, run the following
