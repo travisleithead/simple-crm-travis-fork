@@ -29,7 +29,6 @@ const run = async () => {
         const user = await AppDataSource.manager
             .getRepository(User)
             .findOne({ where: { id: req.params.userid } });
-        // TODO TEST THIS PART
         if (!user) {
             res.status(500).send("note is not attached to a user!");
             return;
@@ -44,13 +43,22 @@ const run = async () => {
     });
     app.put("/users/:id", async (req, res) => {
         const user = await AppDataSource.manager
-            .getRepository(User)
-            .findOne({ where: { id: req.params.id } });
+        .getRepository(User)
+        .findOne({ where: { id: req.params.id } });
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
         user.age = req.body.age;
         user.phoneNumber = req.body.phoneNumber;
         await AppDataSource.manager.getRepository(User).save(user);
+        res.json(user);
+    });
+    app.get("/users/:id", async (req, res) => {
+        const user = await AppDataSource.manager
+        .getRepository(User)
+        .createQueryBuilder("user")
+        .leftJoinAndSelect("user.notes", "notes")
+        .where({ id: req.params.id })
+        .getOne();
         res.json(user);
     });
     app.listen(3000, () => {

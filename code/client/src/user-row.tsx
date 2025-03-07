@@ -2,6 +2,7 @@ import { useState } from "react";
 import { User } from "./types";
 import axios from "axios";
 import { Notes } from "./notes";
+import { Link } from "react-router-dom";
 
 export const UserRow: React.FC<{ user: User }> = ({ user }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -103,10 +104,10 @@ export const UserRow: React.FC<{ user: User }> = ({ user }) => {
                     <button className="px-2 mx-1 border-2" onClick={() => setIsEditing(true)}>Edit</button>
                     <a className="bg-blue-100" href="#" onClick={() => setAddNote(!addNote)}>Add Note</a>
                 </td>
-                <td>{firstName}</td>
-                <td>{lastName}</td>
-                <td>{age}</td>
-                <td>{phoneNumber}</td>
+                <td><Link to={`/userdetails/${user.id}`}>{firstName}</Link></td>
+                <td><Link to={`/userdetails/${user.id}`}>{lastName}</Link></td>
+                <td><Link to={`/userdetails/${user.id}`}>{age}</Link></td>
+                <td><Link to={`/userdetails/${user.id}`}>{phoneNumber}</Link></td>
             </tr>
         )}
         <Notes notes={notes} addnote={addNote} onNewNote={handleNoteAdded}></Notes>
