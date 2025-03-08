@@ -42,30 +42,32 @@ export const AppUserDetail: React.FC = () => {
         );
     }
     return (
-        <div className="p-4 space-y-8">
-            <h1 className="text-xl">SimpleCrm</h1>
-            <Link to="/">Return to all users</Link>
-            <h2>User Details for {id}</h2>
-            <section>
-                <table>
+        <>
+        <h1 className="p-5 text-xl">SimpleCrm</h1>
+        <span className="px-5 border-2 rounded-lg m-5"><Link to="/">Return to all users</Link></span>
+        <div className="p-5 grid grid-cols-3 gap-5 items-start">    
+            <section className="rounded-lg p-5 bg-yellow-50">
+                <h2 className="text-2xl pb-5">User Details for {firstName}</h2>
+                <table cellPadding={2}>
                     <tbody>
                     <tr>
-                        <td>Name</td>
+                        <td className="font-bold px-5">Name</td>
                         <td>{firstName} {lastName}</td>
                     </tr>
                     <tr>
-                        <td>Age</td>
+                        <td className="font-bold px-5">Age</td>
                         <td>{age}</td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
+                        <td className="font-bold px-5">Phone</td>
                         <td>{phoneNumber}</td>
                     </tr>
                     </tbody>
                 </table>
             </section>
-            <section>
-                <table>
+            <section className="rounded-lg col-span-2 p-5 bg-blue-50">
+                <h2 className="text-2xl pb-5">Notes</h2>
+                <table className="w-full">
                     <tbody>
                         {notes.map(note => 
                             <NoteRow note={note} key={`note${note.id}`}></NoteRow>
@@ -74,6 +76,7 @@ export const AppUserDetail: React.FC = () => {
                 </table>
             </section>
         </div>
+        </>
     );
 };
 

@@ -13,9 +13,9 @@ export const NoteRow: React.FC<{ note: Note }> = ({ note }) => {
 
     return (
         <tr className="bg-gray">
-            <td className="" colSpan={5}>
+            <td className="flex" colSpan={5}>
                 <time title={longform} dateTime={machineform}>{displayform}</time>
-                <textarea className="flex-grow" readOnly defaultValue={note.content}></textarea>            
+                <textarea className="flex-grow ml-5 bg-gray-100 border px-2" readOnly defaultValue={note.content}></textarea>            
             </td>
         </tr>
     );
